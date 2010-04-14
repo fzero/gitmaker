@@ -1,0 +1,60 @@
+#!/bin/bash
+
+function usage () {
+cat << EOF
+
+gitmaker - creates a git repository on a ssh host and clones it locally.
+
+Usage:
+$ gitmaker <ssh host> <repo>
+
+Where:
+- <ssh host> is the remote ssh host in the user@host format.
+  If you need to supply additional parameters (e.g. port), 
+  enclose them all in quotes.
+- <repo> is the repository to be created.
+
+NOTE: It's STRONGLY recommended that you setup key-based SSH login to 
+      use git over SSH - unless you like to type your password a lot!
+
+EOF
+}
+
+if [ "$1" == "" ]; then
+  usage
+  exit 1
+fi
+
+SSHDOMAIN="$1"
+REPO="$2"
+
+ssh $SSHDOMAIN "mkdir -p ~/git/$REPO.git && cd ~/git/$REPO.git && git --bare init"
+mkdir $REPO
+cd $REPO
+git init
+git remote add origin ssh://$SSHDOMAIN/~/git/$REPO.git
+touch .gitignore
+git add .
+git commit -m "Created new repo: $REPO"
+git push origin master
+
+cat << EOF >>.git/config
+[branch "master"]
+  remote = origin
+  merge = refs/heads/master
+EOF
+
+cat << EOF
+
+----------
+
+Your new git repository '$REPO' is ready and initialized at 
+ssh://$SSHDOMAIN/~/git/$REPO.git
+
+To clone it from another location, use:
+
+$ git clone ssh://$SSHDOMAIN/~/git/$REPO [local folder]
+
+
+EOF
+
