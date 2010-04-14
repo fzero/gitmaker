@@ -1,0 +1,15 @@
+
+gitmaker - creates a git repository on a ssh host and clones it locally.
+
+Usage:
+$ gitmaker <ssh host> <repo>
+
+Where:
+- <ssh host> is the remote ssh host in the user@host format.
+  If you need to supply additional parameters (e.g. port), 
+  enclose them all in quotes.
+- <repo> is the repository to be created.
+
+NOTE: It's STRONGLY recommended that you setup key-based SSH login to 
+      use git over SSH - unless you like to type your password a lot!
+
