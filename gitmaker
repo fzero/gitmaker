@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# gitmaker 0.2 by Fabio FZero
+
+
 function usage () {
 cat << EOF
 
@@ -20,7 +23,31 @@ NOTE: It's STRONGLY recommended that you setup key-based SSH login to
 EOF
 }
 
-if [ "$1" == "" ]; then
+
+function test_remote_git () {
+  echo -n ">>> Testing if git exists in the server... "
+  if [ "$(ssh $SSHDOMAIN 'git --version &> /dev/null && echo OK')" == "OK" ]; then
+    echo "OK!"
+  else
+    cat << EOF
+FAIL!
+
+You must install git on your server first. You seem to be out of luck,
+since EVEN DREAMHOST has git installed. Unbelievable, eh?
+
+If you have root access on the remote machine, just install it. If you don't,
+you can still try to compile it with PREFIX=/home/(your user) and see if it
+works.
+
+EOF
+    exit 1
+  fi
+}
+
+
+# Sanity checks
+
+if [ "$1" == "" ] || [ "$2" == "" ]; then
   usage
   exit 1
 fi
@@ -28,7 +55,14 @@ fi
 SSHDOMAIN="$1"
 REPO="$2"
 
+test_remote_git
+
+
+# On to business
+
+echo ">>> Creating the remote repository..."
 ssh $SSHDOMAIN "mkdir -p ~/git/$REPO.git && cd ~/git/$REPO.git && git --bare init"
+echo ">>> Creating the local clone and pushing the first commit..."
 mkdir $REPO
 cd $REPO
 git init
@@ -37,7 +71,6 @@ touch .gitignore
 git add .
 git commit -m "Created new repo: $REPO"
 git push origin master
-
 cat << EOF >>.git/config
 [branch "master"]
   remote = origin
@@ -52,9 +85,7 @@ Your new git repository '$REPO' is ready and initialized at
 ssh://$SSHDOMAIN/~/git/$REPO.git
 
 To clone it from another location, use:
-
 $ git clone ssh://$SSHDOMAIN/~/git/$REPO [local folder]
-
 
 EOF
 
