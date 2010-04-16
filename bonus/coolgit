@@ -34,12 +34,12 @@ git config --global color.clone auto
 git config --global color.commit auto
 
 # Shorthand aliases
-git config --global alias.st status
-git config --global alias.sh stash
+git config --global alias.s  status
+git config --global alias.st stash
 git config --global alias.cm commit
 git config --global alias.co checkout
 git config --global alias.br branch
-git config --global alias.pu pull
+git config --global alias.pl pull
 git config --global alias.ps push
 git config --global alias.cl clone
 
