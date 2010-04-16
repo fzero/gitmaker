@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# coolgit - some additional configs to make git cuter.
+
+cat << EOF
+
+This script adds some cool configs to your local git installation, making it
+display messages in color and adding shorthands to comonly used commons (e.g.
+'git co' instead of 'git checkout'). 
+
+If for some reason you don't want this - or if you want to step in and edit
+the script yourself before running it - press CTRL-C now or ENTER to continue.
+EOF
+
+read
+
+# Basic config - edit and uncomment here if you haven't configured 
+# this before.
+#
+# git config --global user.name="Your Name"
+# git config --global user.email=email@example.com
+# 
+# You can also add these configs to each separate repo by omitting
+# the --global parameter.
+
+# Makes git colorful
+git config --global color.diff auto
+git config --global color.status auto
+git config --global color.branch auto
+git config --global color.interactive auto
+git config --global color.pull auto
+git config --global color.push auto
+git config --global color.clone auto
+git config --global color.commit auto
+
+
+# Shorthand aliases
+git config --global alias.st status
+git config --global alias.cm commit
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.pu pull
+git config --global alias.ps push
+git config --global alias.cl clone
+
+echo "All done! Use 'git config --list' to check the current configuration."
+echo
+
