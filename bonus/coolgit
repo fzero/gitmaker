@@ -5,7 +5,7 @@
 cat << EOF
 
 This script adds some cool configs to your local git installation, making it
-display messages in color and adding shorthands to commonly used commons (e.g.
+display messages in color and adding shorthands to commonly used commands (e.g.
 'git co' instead of 'git checkout'). 
 
 If for some reason you don't want this - or if you want to step in and edit
@@ -32,7 +32,6 @@ git config --global color.pull auto
 git config --global color.push auto
 git config --global color.clone auto
 git config --global color.commit auto
-
 
 # Shorthand aliases
 git config --global alias.st status
