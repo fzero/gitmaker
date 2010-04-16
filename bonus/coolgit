@@ -5,7 +5,7 @@
 cat << EOF
 
 This script adds some cool configs to your local git installation, making it
-display messages in color and adding shorthands to comonly used commons (e.g.
+display messages in color and adding shorthands to commonly used commons (e.g.
 'git co' instead of 'git checkout'). 
 
 If for some reason you don't want this - or if you want to step in and edit
