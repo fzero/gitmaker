@@ -1,7 +1,15 @@
 #!/bin/bash
 
-# gitmaker 0.2 by Fabio FZero
+# gitmaker 0.3 by Fabio FZero
 
+
+# Main vars
+
+SSHDOMAIN="$1"
+REPO="$2"
+
+
+# Functions
 
 function usage () {
 cat << EOF
@@ -9,18 +17,28 @@ cat << EOF
 gitmaker - creates a git repository on a ssh host and clones it locally.
 
 Usage:
-$ gitmaker <ssh host> <repo>
 
-Where:
-- <ssh host> is the remote ssh host in the user@host format.
-  If you need to supply additional parameters (e.g. port), 
-  enclose them all in quotes.
-- <repo> is the repository to be created.
+  $ gitmaker <ssh host> <repo>
+
+Where: 
+
+  <ssh host> is the remote ssh host in the user@host format.  If you need to
+  supply additional parameters (e.g. port), enclose them all in quotes.
+
+  <repo> is the repository to be created.
 
 NOTE: It's STRONGLY recommended that you setup key-based SSH login to 
       use git over SSH - unless you like to type your password a lot!
 
 EOF
+}
+
+
+function test_params () {
+  if [ "$SSHDOMAIN" == "" ] || [ "$REPO" == "" ]; then
+    usage
+    exit 1
+  fi
 }
 
 
@@ -45,23 +63,13 @@ EOF
 }
 
 
-# Sanity checks
-
-if [ "$1" == "" ] || [ "$2" == "" ]; then
-  usage
-  exit 1
-fi
-
-SSHDOMAIN="$1"
-REPO="$2"
-
-test_remote_git
-
-
 # On to business
 
+test_params
+test_remote_git
+
 echo ">>> Creating the remote repository..."
-ssh $SSHDOMAIN "mkdir -p ~/git/$REPO.git && cd ~/git/$REPO.git && git --bare init"
+ssh $SSHDOMAIN "mkdir -p ~/git/$REPO.git && cd ~/git/$REPO.git && git --bare init" && \
 echo ">>> Creating the local clone and pushing the first commit..."
 mkdir $REPO
 cd $REPO
