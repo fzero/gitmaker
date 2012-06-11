@@ -43,6 +43,9 @@ git config --global alias.pl pull
 git config --global alias.ps push
 git config --global alias.cl clone
 
+# Make git push work on the current branch by default
+git config --global push.default current
+
 echo "All done! Use 'git config --list' to check the current configuration."
 echo
 
