@@ -18,7 +18,7 @@ read
 # this before.
 #
 # git config --global user.name "Your Name"
-# git config --global user.email=email@example.com
+# git config --global user.email email@example.com
 #
 # You can also add these configs to each separate repo by omitting
 # the --global parameter.
