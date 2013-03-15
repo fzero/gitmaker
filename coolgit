@@ -4,9 +4,12 @@
 
 cat << EOF
 
-This script adds some cool configs to your local git installation, making it
+This script adds some extra configs to your local git installation, making it
 display messages in color and adding shorthands to commonly used commands (e.g.
 'git co' instead of 'git checkout').
+
+It optionally configures your global user name, email and .gitignore file. Edit
+the script to change these configurations according to your setup.
 
 If for some reason you don't want this - or if you want to step in and edit
 the script yourself before running it - press CTRL-C now or ENTER to continue.
@@ -17,8 +20,12 @@ read
 # Basic config - edit and uncomment here if you haven't configured
 # this before.
 #
+# User configuration
 # git config --global user.name "Your Name"
-# git config --global user.email email@example.com
+# git config --global user.email your_email@example.com
+#
+# Global .gitignore file
+# git config --global core.excludesfile ~/.gitignore
 #
 # You can also add these configs to each separate repo by omitting
 # the --global parameter.

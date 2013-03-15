@@ -1,5 +1,5 @@
 #!/bin/bash
-# gitmaker 0.4 by Fabio FZero
+# gitmaker 0.5 by Fabio FZero
 
 # Halt on all errors
 set -e

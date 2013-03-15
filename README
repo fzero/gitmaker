@@ -1,4 +1,4 @@
-Gitmaker v0.4 - by Fabio FZero
+Gitmaker v0.5 - by Fabio FZero
 ==============================
 
 Gitmaker is a simple script that creates a Git repository in a remote SSH
@@ -29,6 +29,14 @@ This will create a remote 'myrepo' repository at example.com with a local clone
 on the current directory. Yep, it’s ready. Commit and be happy.
 
 
+OMG bonus round!
+----------------
+
+Use the coolgit sccript to add some color and aliases to your git setup. It can
+also setup your global username, email and ignore file. Just jump in and edit it
+to your liking.
+
+
 Micro-FAQ
 ---------
 
@@ -51,7 +59,7 @@ Seriously though, this will probably work on Cygwin. If it doesn’t and you can
 fix it, please send me a patch! :-)
 
 
-License 
+License
 -------
 
 Hey, it's on GitHub. Anyone can see, anyone can fork, anyone can modify. Just
@@ -67,7 +75,7 @@ Contact
 -------
 
 If you really want, you can follow me on Twitter: @fzero. Beware: I write both
-in english and portuguese. 
+in english and portuguese.
 
 
 
