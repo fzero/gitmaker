@@ -30,7 +30,7 @@ on the current directory. Yep, it’s ready. Commit and be happy.
 
 ## OMG bonus round!
 
-Use the coolgit sccript to add some color and aliases to your git setup. It can
+Use the [`coolgit`](coolgit) sccript to add some color and aliases to your git setup. It can
 also setup your global username, email and ignore file. Just jump in and edit it
 to your liking.
 
@@ -39,20 +39,18 @@ to your liking.
 
 **Q: But dude, I don’t have Git on my server!**
 
-A: Well, that sucks. Even Dreamhost (yeah, can you believe it? EVEN
-DREAMHOST!!!) has Git available for all users with SSH access. Anyway, it
-shouldn’t be too complicated to fix this.
+A: Well, that sucks. Anyway, it shouldn’t be too complicated to fix this.
 
-If you have root access, just apt-get install it (or yum it, or emerge it —
+If you have root access, just `apt-get install` it (or `yum` it, or `emerge` it —
 whatever you like). If you don’t, I believe it shouldn’t be too complicated
-to compile it from source with PREFIX=/home/your_user.
+to compile it from source with `PREFIX=/home/your_user`.
 
 
 **Q: But I run Windows!**
 
 A: This should work fine on WSL (a.k.a. Ubuntu on Windows) or any other *nix-on-
 Windows tools such as Cygwin. Yes, you will need to use a terminal, but if
-you're here you probably know how to code already!
+you're here you probably know that already!
 
 
 ## License
