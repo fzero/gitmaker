@@ -15,8 +15,8 @@ you need is Git itself.
 
 To use Gitmaker you need:
 
-* Git installed on both your local machine and the SSH server. Key-based login
-* configured for your SSH user (optional but highly recommended, unless you like to type your password a lot).
+* Git installed on both your local machine and the SSH server. 
+* Key-based login configured for your SSH user (optional but highly recommended, unless you like to type your password a lot).
 
 Once you have this, go to your favorite folder where you keep your precious programming projects and type:
 
