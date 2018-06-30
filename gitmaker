@@ -39,6 +39,11 @@ function test_params () {
     usage
     exit 1
   fi
+  # Make sure that $REPO is empty before creating the repo locally
+  if [ "$(ls -A $REPO)" ]; then
+    echo "fatal: destination path '$REPO' already exists and is not an empty directory."
+    exit 1
+  fi
 }
 
 
