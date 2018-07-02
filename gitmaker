@@ -39,6 +39,11 @@ function test_params () {
     usage
     exit 1
   fi
+  # Make sure that $REPO is empty before creating the repo locally
+  if [ "$(ls -A $REPO)" ]; then
+    echo "fatal: destination path '$REPO' already exists and is not an empty directory."
+    exit 1
+  fi
 }
 
 
@@ -71,7 +76,7 @@ test_remote_git
 echo ">>> Creating the remote repository..."
 ssh $SSHDOMAIN "mkdir -p ~/git/$REPO.git && cd ~/git/$REPO.git && git --bare init"
 echo ">>> Creating the local clone and pushing the first commit..."
-mkdir $REPO
+mkdir -p $REPO
 cd $REPO
 git init
 git remote add origin ssh://$SSHDOMAIN/~/git/$REPO.git
