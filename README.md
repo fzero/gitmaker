@@ -1,4 +1,4 @@
-# Gitmaker v0.5 - by Fabio FZero
+# Gitmaker v0.5
 
 **Gitmaker** is a simple script that creates a Git repository in a remote SSH
 server and clones it in the local machine.
